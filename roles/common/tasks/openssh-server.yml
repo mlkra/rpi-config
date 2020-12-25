@@ -1,0 +1,11 @@
+- name: Install OpenSSH server
+  apt:
+    name: openssh-server
+    state: latest
+    update_cache: yes
+- name: Copy OpenSSH server config
+  copy:
+    src: ssh/10-disable-password-authentication.conf
+    dest: /etc/ssh/sshd_config.d/10-disable-password-authentication.conf
+  notify:
+    - Reload ssh config

@@ -1,0 +1,2 @@
+- name: Set up OpenSSH server
+  import_tasks: openssh-server.yml
