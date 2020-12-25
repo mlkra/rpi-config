@@ -1,0 +1,25 @@
+- name: Install ufw
+  apt:
+    name: ufw
+    state: latest
+    update_cache: yes
+- name: Set default outgoing policy
+  community.general.ufw:
+    default: allow
+    direction: outgoing
+- name: Set default incoming policy
+  community.general.ufw:
+    default: deny
+    direction: incoming
+- name: Add rule allowing multicast traffic from router
+  community.general.ufw:
+    rule: limit
+    from_ip: 192.168.0.1
+    to_ip: 224.0.0.1
+- name: Add ssh rule
+  community.general.ufw:
+    rule: limit
+    app: OpenSSH
+- name: Enable ufw
+  community.general.ufw:
+    state: enabled
