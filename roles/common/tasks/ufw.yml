@@ -20,6 +20,10 @@
   community.general.ufw:
     rule: limit
     app: OpenSSH
+- name: Add rule allowing LLMNR traffic
+  community.general.ufw:
+    rule: allow
+    port: '5355'
 - name: Enable ufw
   community.general.ufw:
     state: enabled
