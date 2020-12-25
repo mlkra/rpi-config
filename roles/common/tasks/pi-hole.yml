@@ -8,6 +8,9 @@
       - "67:67/udp"
       - "80:80"
       - "443:443"
+    volumes:
+      - /pihole/etc/pihole/:/etc/pihole/
+      - /pihole/etc/dnsmasq.d/:/etc/dnsmasq.d/
     env:
       TZ: Europe/Warsaw
       WEBPASSWORD: "{{ pi_hole_webpassword }}"
