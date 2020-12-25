@@ -1,0 +1,1 @@
+pi_hole_webpassword: "{{ vault_pi_hole_webpassword }}"

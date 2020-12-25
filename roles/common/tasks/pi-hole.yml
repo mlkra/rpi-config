@@ -1,0 +1,18 @@
+- name: Create Pi-hole container
+  community.general.docker_container:
+    name: pihole
+    image: pihole/pihole
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "67:67/udp"
+      - "80:80"
+      - "443:443"
+    env:
+      TZ: Europe/Warsaw
+      WEBPASSWORD: "{{ pi_hole_webpassword }}"
+    capabilities:
+      - NET_ADMIN
+    restart_policy: unless-stopped
+    pull: yes
+    container_default_behavior: no_defaults
