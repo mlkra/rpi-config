@@ -29,8 +29,12 @@
   group:
     name: docker
     state: present
-- name: Add pi user to the docker group
+- name: Add ubuntu user to the docker group
   user:
-    name: pi
-    group: docker
+    name: ubuntu
+    groups: docker
     append: yes
+- name: Install Docker SDK for Python
+  apt:
+    name: python3-docker
+    state: latest
