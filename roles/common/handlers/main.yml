@@ -1,4 +1,7 @@
 - name: Reload ssh config
   service:
-      name: ssh
-      state: reloaded
+    name: ssh
+    state: reloaded
+- name: Verify that Docker Engine is installed correctly
+  shell: docker run hello-world
+  changed_when: False

@@ -2,3 +2,5 @@
   import_tasks: openssh-server.yml
 - name: Set up ufw
   import_tasks: ufw.yml
+- name: Set up Docker Engine
+  import_tasks: docker.yml
