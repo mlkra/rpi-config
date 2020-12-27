@@ -3,5 +3,7 @@
     name: ssh
     state: reloaded
 - name: Verify that Docker Engine is installed correctly
-  shell: docker run hello-world
+  command: docker run hello-world
   changed_when: False
+- name: Disable Pi-hole's query logging
+  command: "docker exec {{ pihole_container_name }} pihole logging off"

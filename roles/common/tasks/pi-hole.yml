@@ -1,6 +1,6 @@
 - name: Create Pi-hole container
   community.general.docker_container:
-    name: pihole
+    name: "{{ pihole_container_name }}"
     image: pihole/pihole
     ports:
       - "53:53/tcp"
@@ -19,3 +19,5 @@
     restart_policy: unless-stopped
     pull: yes
     container_default_behavior: no_defaults
+  notify:
+    - Disable Pi-hole's query logging
