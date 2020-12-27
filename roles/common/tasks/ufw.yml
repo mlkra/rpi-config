@@ -11,11 +11,10 @@
   community.general.ufw:
     default: deny
     direction: incoming
-- name: Add rule allowing multicast traffic from router
+- name: Add rule allowing multicast traffic
   community.general.ufw:
     rule: limit
-    from_ip: 192.168.0.1
-    to_ip: 224.0.0.1
+    to_ip: '224.0.0.0/24'
 - name: Add ssh rule
   community.general.ufw:
     rule: limit
