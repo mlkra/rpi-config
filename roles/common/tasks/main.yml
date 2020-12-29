@@ -6,3 +6,5 @@
   import_tasks: docker.yml
 - name: Install Pi-hole
   import_tasks: pi-hole.yml
+- name: Set up nginx
+  import_tasks: nginx.yml

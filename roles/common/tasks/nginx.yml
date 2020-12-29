@@ -1,0 +1,25 @@
+- name: Install nginx
+  apt:
+    name: nginx
+    state: latest
+    update_cache: yes
+  notify:
+    - Verify that nginx is installed correctly
+- name: Disable default virtual host
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+- name: Add reverse proxy configuration
+  template:
+    src: nginx/reverse-proxy.conf.j2
+    dest: "{{ nginx_sites_available_reverse_proxy_conf }}"
+  notify: Reload nginx config
+- name: Enable reverse_proxy
+  file:
+    src: "{{ nginx_sites_available_reverse_proxy_conf }}"
+    path: "{{ nginx_sites_enabled_path }}/{{ nginx_reverse_proxy_conf_name }}"
+    state: link
+- name: Add rule allowing nginx traffic
+  community.general.ufw:
+    rule: allow
+    app: Nginx HTTP

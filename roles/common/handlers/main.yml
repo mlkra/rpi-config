@@ -5,5 +5,10 @@
 - name: Verify that Docker Engine is installed correctly
   command: docker run hello-world
   changed_when: False
-- name: Disable Pi-hole's query logging
-  command: "docker exec {{ pihole_container_name }} pihole logging off"
+- name: Verify that nginx is installed correctly
+  command: nginx -v
+  changed_when: False
+- name: Reload nginx config
+  service:
+    name: nginx
+    state: reloaded
