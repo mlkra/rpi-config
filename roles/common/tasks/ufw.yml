@@ -13,16 +13,18 @@
     direction: incoming
 - name: Add rule allowing multicast traffic
   community.general.ufw:
-    rule: limit
-    to_ip: '224.0.0.0/24'
+    rule: allow
+    from: '192.168.0.0/24'
+    to: '224.0.0.0/24'
 - name: Add ssh rule
   community.general.ufw:
-    rule: limit
+    rule: allow
     app: OpenSSH
 - name: Add rule allowing LLMNR traffic
   community.general.ufw:
     rule: allow
     port: '5355'
+    from: '192.168.0.0/24'
 - name: Enable ufw
   community.general.ufw:
     state: enabled
