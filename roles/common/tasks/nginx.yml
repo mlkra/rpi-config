@@ -11,7 +11,7 @@
     state: absent
 - name: Add reverse proxy configuration
   template:
-    src: nginx/reverse-proxy.conf.j2
+    src: "nginx/{{ nginx_reverse_proxy_conf_name }}.j2"
     dest: "{{ nginx_sites_available_reverse_proxy_conf }}"
   notify: Reload nginx config
 - name: Enable reverse_proxy
