@@ -12,3 +12,5 @@
   service:
     name: nginx
     state: reloaded
+- name: Disable Pi-hole's query logging
+  command: "docker exec {{ pihole_container_name }} pihole logging off"
